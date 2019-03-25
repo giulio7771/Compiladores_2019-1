@@ -6,7 +6,8 @@
 package src;
 
 /**
- *
+ * Furb 2019-1 Compiladores
+ * Professora: Joice Martins
  * @author giulio
  */
 public class Compilador_20191 {
