@@ -17,6 +17,7 @@ public class Compilador_20191 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        System.out.println("");
         View view = new View();
         view.setEnabled(true);
     }
