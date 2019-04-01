@@ -23,17 +23,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jPanelMainScreen" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+          <Component id="jPanelMainScreen" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="jPanelMainScreen">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -41,7 +41,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="textArea1" alignment="1" max="32767" attributes="0"/>
+                      <Component id="textEditorTA" alignment="1" max="32767" attributes="0"/>
                       <Component id="textArea2" alignment="1" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jButton_1_novo" min="-2" max="-2" attributes="0"/>
@@ -82,7 +82,7 @@
                       <Component id="jButton8" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="textArea1" min="-2" pref="484" max="-2" attributes="0"/>
+                  <Component id="textEditorTA" min="-2" pref="484" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="textArea2" min="-2" pref="68" max="-2" attributes="0"/>
                   <EmptySpace pref="30" max="32767" attributes="0"/>
@@ -92,17 +92,23 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="java.awt.TextArea" name="textArea1">
+        <Component class="java.awt.TextArea" name="textEditorTA">
         </Component>
         <Component class="javax.swing.JButton" name="jButton_1_novo">
           <Properties>
             <Property name="text" type="java.lang.String" value="novo [ctrl-n]"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_1_novoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
             <Property name="text" type="java.lang.String" value="abrir [ctrl-o]"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>
