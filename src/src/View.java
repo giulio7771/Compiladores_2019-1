@@ -24,6 +24,7 @@ public class View extends javax.swing.JFrame {
     /**
      * Creates new form View
      */
+    private static File openedFile = null;
     public View() {
         initComponents();
         //how to set up butto icons
@@ -54,7 +55,8 @@ public class View extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         textArea2 = new java.awt.TextArea();
-        panel1 = new java.awt.Panel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextAreaStatusBar = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,16 +86,9 @@ public class View extends javax.swing.JFrame {
 
         jButton8.setText("equipe [F1]");
 
-        javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
-        panel1.setLayout(panel1Layout);
-        panel1Layout.setHorizontalGroup(
-            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panel1Layout.setVerticalGroup(
-            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 49, Short.MAX_VALUE)
-        );
+        jTextAreaStatusBar.setColumns(20);
+        jTextAreaStatusBar.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaStatusBar);
 
         javax.swing.GroupLayout jPanelMainScreenLayout = new javax.swing.GroupLayout(jPanelMainScreen);
         jPanelMainScreen.setLayout(jPanelMainScreenLayout);
@@ -102,6 +97,7 @@ public class View extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMainScreenLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelMainScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1)
                     .addComponent(textEditorTA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(textArea2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelMainScreenLayout.createSequentialGroup()
@@ -122,7 +118,6 @@ public class View extends javax.swing.JFrame {
                         .addComponent(jButton8)
                         .addGap(0, 80, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanelMainScreenLayout.setVerticalGroup(
             jPanelMainScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,8 +136,9 @@ public class View extends javax.swing.JFrame {
                 .addComponent(textEditorTA, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textArea2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -174,10 +170,16 @@ public class View extends javax.swing.JFrame {
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
             }
+            //gamb para apresentar número da linha
             int lineNumber = 1;
             while (sc.hasNextLine()) {
                 textEditorTA.append((lineNumber++) + "|   " + sc.nextLine() + "\n");
             }
+            //set status bar
+            openedFile = file;
+            String path = file.getPath();
+            String name = file.getName();
+            jTextAreaStatusBar.setText("Arquivo corrente: "+name+"\nPasta: "+path);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -226,7 +228,8 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton_1_novo;
     private javax.swing.JPanel jPanelMainScreen;
-    private java.awt.Panel panel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextAreaStatusBar;
     private java.awt.TextArea textArea2;
     private java.awt.TextArea textEditorTA;
     // End of variables declaration//GEN-END:variables
