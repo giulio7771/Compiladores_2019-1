@@ -123,26 +123,41 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="copiar [ctrl-c]"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCopiarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonColar">
           <Properties>
             <Property name="text" type="java.lang.String" value="colar [ctrl-v]"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonColarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonRecortar">
           <Properties>
             <Property name="text" type="java.lang.String" value="recortar [ctrl-x]"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRecortarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonCompilar">
           <Properties>
             <Property name="text" type="java.lang.String" value="compilar [F9]"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCompilarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonEquipe">
           <Properties>
             <Property name="text" type="java.lang.String" value="equipe [F1]"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEquipeActionPerformed"/>
+          </Events>
         </Component>
         <Component class="java.awt.TextArea" name="jTextAreaMessages">
         </Component>

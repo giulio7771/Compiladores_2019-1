@@ -28,6 +28,7 @@ public class View extends javax.swing.JFrame {
      * Creates new form View
      */
     private static File openedFile = null;
+    private static String textCache = "";
 
     public View() {
         initComponents();
@@ -88,14 +89,39 @@ public class View extends javax.swing.JFrame {
         });
 
         jButtonCopiar.setText("copiar [ctrl-c]");
+        jButtonCopiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCopiarActionPerformed(evt);
+            }
+        });
 
         jButtonColar.setText("colar [ctrl-v]");
+        jButtonColar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonColarActionPerformed(evt);
+            }
+        });
 
         jButtonRecortar.setText("recortar [ctrl-x]");
+        jButtonRecortar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRecortarActionPerformed(evt);
+            }
+        });
 
         jButtonCompilar.setText("compilar [F9]");
+        jButtonCompilar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCompilarActionPerformed(evt);
+            }
+        });
 
         jButtonEquipe.setText("equipe [F1]");
+        jButtonEquipe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEquipeActionPerformed(evt);
+            }
+        });
 
         jTextAreaStatusBar.setColumns(20);
         jTextAreaStatusBar.setRows(5);
@@ -229,6 +255,32 @@ public class View extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
+
+    private void jButtonCompilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCompilarActionPerformed
+        // TODO add your handling code here:
+        jTextAreaMessages.append("Compilação de programas ainda não foi implementada\n");
+    }//GEN-LAST:event_jButtonCompilarActionPerformed
+
+    private void jButtonEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEquipeActionPerformed
+        // TODO add your handling code here:
+        jTextAreaMessages.append("Equipe: Giulio Giovanella; José Henrique Teixeira; Diogo Warmeling\n");
+    }//GEN-LAST:event_jButtonEquipeActionPerformed
+
+    private void jButtonCopiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCopiarActionPerformed
+        // TODO add your handling code here:
+        textCache = jTextAreaTextEditor.getSelectedText();
+    }//GEN-LAST:event_jButtonCopiarActionPerformed
+
+    private void jButtonColarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonColarActionPerformed
+        //gamb inserindo o texto no final, e não no cursor
+        jTextAreaTextEditor.append(textCache);
+    }//GEN-LAST:event_jButtonColarActionPerformed
+
+    private void jButtonRecortarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRecortarActionPerformed
+        textCache = jTextAreaTextEditor.getSelectedText();
+        String textOnEditor = jTextAreaTextEditor.getText();
+        
+    }//GEN-LAST:event_jButtonRecortarActionPerformed
 
     /**
      * @param args the command line arguments
