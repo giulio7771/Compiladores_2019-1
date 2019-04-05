@@ -8,6 +8,9 @@ package src;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,13 +28,16 @@ public class View extends javax.swing.JFrame {
      * Creates new form View
      */
     private static File openedFile = null;
+
     public View() {
         initComponents();
         //how to set up butto icons
         // Icon icone = new ImageIcon("imgs\\1-novo.png");
         // jButton_1_novo.setIcon(icone);
 
-        jPanelMainScreen.setSize(1900, 600);
+        jTextAreaMessages.setEditable(false);
+        jTextAreaMessages.setEnabled(false);
+        jTextAreaStatusBar.setEditable(false);
 
     }
 
@@ -45,16 +51,16 @@ public class View extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanelMainScreen = new javax.swing.JPanel();
-        textEditorTA = new java.awt.TextArea();
+        jTextAreaTextEditor = new java.awt.TextArea();
         jButton_1_novo = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        textArea2 = new java.awt.TextArea();
+        jButtonAbrir = new javax.swing.JButton();
+        jButtonSalvar = new javax.swing.JButton();
+        jButtonCopiar = new javax.swing.JButton();
+        jButtonColar = new javax.swing.JButton();
+        jButtonRecortar = new javax.swing.JButton();
+        jButtonCompilar = new javax.swing.JButton();
+        jButtonEquipe = new javax.swing.JButton();
+        jTextAreaMessages = new java.awt.TextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaStatusBar = new javax.swing.JTextArea();
 
@@ -67,24 +73,29 @@ public class View extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("abrir [ctrl-o]");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAbrir.setText("abrir [ctrl-o]");
+        jButtonAbrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonAbrirActionPerformed(evt);
             }
         });
 
-        jButton3.setText("salvar [ctrl-s]");
+        jButtonSalvar.setText("salvar [ctrl-s]");
+        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("copiar [ctrl-c]");
+        jButtonCopiar.setText("copiar [ctrl-c]");
 
-        jButton5.setText("colar [ctrl-v]");
+        jButtonColar.setText("colar [ctrl-v]");
 
-        jButton6.setText("recortar [ctrl-x]");
+        jButtonRecortar.setText("recortar [ctrl-x]");
 
-        jButton7.setText("compilar [F9]");
+        jButtonCompilar.setText("compilar [F9]");
 
-        jButton8.setText("equipe [F1]");
+        jButtonEquipe.setText("equipe [F1]");
 
         jTextAreaStatusBar.setColumns(20);
         jTextAreaStatusBar.setRows(5);
@@ -98,24 +109,24 @@ public class View extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelMainScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1)
-                    .addComponent(textEditorTA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textArea2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextAreaTextEditor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextAreaMessages, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelMainScreenLayout.createSequentialGroup()
                         .addComponent(jButton_1_novo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
+                        .addComponent(jButtonAbrir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
+                        .addComponent(jButtonSalvar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4)
+                        .addComponent(jButtonCopiar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5)
+                        .addComponent(jButtonColar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6)
+                        .addComponent(jButtonRecortar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7)
+                        .addComponent(jButtonCompilar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton8)
+                        .addComponent(jButtonEquipe)
                         .addGap(0, 80, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -124,18 +135,18 @@ public class View extends javax.swing.JFrame {
             .addGroup(jPanelMainScreenLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelMainScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonCompilar, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+                    .addComponent(jButtonRecortar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonColar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonCopiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton_1_novo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonAbrir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonEquipe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textEditorTA, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextAreaTextEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textArea2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextAreaMessages, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -156,12 +167,16 @@ public class View extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_1_novoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_1_novoActionPerformed
-
+        jTextAreaMessages.setText("");
+        jTextAreaStatusBar.setText("");
+        jTextAreaTextEditor.setText("");
+        openedFile = null;
     }//GEN-LAST:event_jButton_1_novoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAbrirActionPerformed
+        jTextAreaTextEditor.setText("");
         JFileChooser jfc = new JFileChooser();
-        if (jfc.showSaveDialog(null) != 1) {
+        if (jfc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
             jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
             File file = jfc.getSelectedFile();
             Scanner sc = null;
@@ -173,15 +188,47 @@ public class View extends javax.swing.JFrame {
             //gamb para apresentar número da linha
             int lineNumber = 1;
             while (sc.hasNextLine()) {
-                textEditorTA.append((lineNumber++) + "|   " + sc.nextLine() + "\n");
+                jTextAreaTextEditor.append((lineNumber++) + "|   " + sc.nextLine() + "\n");
             }
             //set status bar
             openedFile = file;
-            String path = file.getPath();
-            String name = file.getName();
-            jTextAreaStatusBar.setText("Arquivo corrente: "+name+"\nPasta: "+path);
+            setStatus();
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonAbrirActionPerformed
+
+    private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+        // TODO add your handling code here:
+        if (openedFile != null) {
+            try {
+                //salvar no arquivo aberto
+                FileWriter fr = new FileWriter(openedFile.getAbsolutePath());
+                PrintWriter pw = new PrintWriter(fr);
+                pw.printf(jTextAreaTextEditor.getText());
+                System.out.println("Saved on: " + openedFile.getPath());
+                System.out.println("Value:\n" + jTextAreaTextEditor.getText());
+                pw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            //salvar em um arquivo novo
+            JFileChooser jfc = new JFileChooser();
+            if (jfc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+                File file = jfc.getSelectedFile();
+                openedFile = file;
+                try {
+                    FileWriter fr = new FileWriter(file.getAbsolutePath());
+                    PrintWriter pw = new PrintWriter(fr);
+                    pw.printf(jTextAreaTextEditor.getText());
+                    jTextAreaMessages.setText("");
+                    pw.close();
+                    setStatus();
+                } catch (IOException ex) {
+                    Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,18 +266,24 @@ public class View extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButtonAbrir;
+    private javax.swing.JButton jButtonColar;
+    private javax.swing.JButton jButtonCompilar;
+    private javax.swing.JButton jButtonCopiar;
+    private javax.swing.JButton jButtonEquipe;
+    private javax.swing.JButton jButtonRecortar;
+    private javax.swing.JButton jButtonSalvar;
     private javax.swing.JButton jButton_1_novo;
     private javax.swing.JPanel jPanelMainScreen;
     private javax.swing.JScrollPane jScrollPane1;
+    private java.awt.TextArea jTextAreaMessages;
     private javax.swing.JTextArea jTextAreaStatusBar;
-    private java.awt.TextArea textArea2;
-    private java.awt.TextArea textEditorTA;
+    private java.awt.TextArea jTextAreaTextEditor;
     // End of variables declaration//GEN-END:variables
+
+    private void setStatus() {
+        String path = openedFile.getPath();
+        String name = openedFile.getName();
+        jTextAreaStatusBar.setText("Arquivo corrente: " + name + "\nPasta: " + path);
+    }
 }
