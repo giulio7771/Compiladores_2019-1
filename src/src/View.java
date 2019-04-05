@@ -5,18 +5,31 @@
  */
 package src;
 
+import java.awt.Event;
+import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.AbstractAction;
+import javax.swing.ActionMap;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.InputMap;
 import javax.swing.JFileChooser;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.KeyStroke;
+import javax.swing.text.DefaultEditorKit;
 
 /**
  *
@@ -29,6 +42,39 @@ public class View extends javax.swing.JFrame {
      */
     private static File openedFile = null;
     private static String textCache = "";
+    
+    private final Shortcut aOpen = new Shortcut("CTRLO");
+    private final Shortcut aNew = new Shortcut("CTRLN");
+    private final Shortcut aSave = new Shortcut("CTRLS");
+    private final Shortcut aAbout = new Shortcut("F1");
+    private final Shortcut aCopy = new Shortcut("CTRLC");
+    private final Shortcut aCut = new Shortcut("CTRLX");
+    private final Shortcut aPaste = new Shortcut("CTRLV");
+    private final Shortcut aCompile = new Shortcut("F9");
+
+    public class Shortcut extends AbstractAction {
+
+        private final String buttonPressed;
+
+        public Shortcut(String buttonPressed) {
+            this.buttonPressed = buttonPressed;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent event) {
+            switch (this.buttonPressed) {
+                case "F1": jButtonEquipeActionPerformed(event); break;
+                case "F9": jButtonCompilarActionPerformed(event); break;
+                case "CTRLC": jButtonCopiarActionPerformed(event); break;
+                case "CRTLX": jButtonRecortarActionPerformed(event); break;
+                case "CTRLV": jButtonColarActionPerformed(event); break;
+                case "CTRLO": jButtonAbrirActionPerformed(event); break;
+                case "CTRLN": jButton_1_novoActionPerformed(event); break;
+                case "CTRLS": jButtonSalvarActionPerformed(event); break;
+            }
+        }
+
+    }
 
     public View() {
         initComponents();
@@ -36,9 +82,35 @@ public class View extends javax.swing.JFrame {
         // Icon icone = new ImageIcon("imgs\\1-novo.png");
         // jButton_1_novo.setIcon(icone);
 
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        //scroll.setHorizontalScrollBar(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         jTextAreaMessages.setEditable(false);
         jTextAreaMessages.setEnabled(false);
         jTextAreaStatusBar.setEditable(false);
+//        jTextAreaTextEditor.setBorder(new NumberedBorder());
+        setUpShortcutKeys(jPanelMainScreen);
+    }
+    public void setUpShortcutKeys(JPanel panel){
+        ActionMap actionMap = panel.getActionMap();
+        actionMap.put("bAbout", aAbout);
+        actionMap.put("bNew", aNew);
+        actionMap.put("bOpen", aOpen);
+        actionMap.put("bSave", aSave);
+        actionMap.put("bCut", aCut);
+        actionMap.put("bCopy", aCopy);
+        actionMap.put("bPaste", aPaste);
+        actionMap.put("bCompile", aCompile);
+        panel.setActionMap(actionMap);
+        InputMap imap = panel.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
+        imap.put(KeyStroke.getKeyStroke("F1"), "bAbout");
+        imap.put(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK), "bNew");
+        imap.put(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_MASK), "bOpen");
+        imap.put(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK), "bSave");
+        imap.put(KeyStroke.getKeyStroke(KeyEvent.VK_X, InputEvent.CTRL_MASK), "bCut");
+        imap.put(KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_MASK), "bCopy");
+        imap.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, InputEvent.CTRL_MASK), "bPaste");
+        imap.put(KeyStroke.getKeyStroke("F9"), "bCompile");
+        
 
     }
 
@@ -52,7 +124,6 @@ public class View extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanelMainScreen = new javax.swing.JPanel();
-        jTextAreaTextEditor = new java.awt.TextArea();
         jButton_1_novo = new javax.swing.JButton();
         jButtonAbrir = new javax.swing.JButton();
         jButtonSalvar = new javax.swing.JButton();
@@ -64,6 +135,8 @@ public class View extends javax.swing.JFrame {
         jTextAreaMessages = new java.awt.TextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaStatusBar = new javax.swing.JTextArea();
+        scroll = new javax.swing.JScrollPane();
+        jTextAreaTextEditor = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,6 +200,10 @@ public class View extends javax.swing.JFrame {
         jTextAreaStatusBar.setRows(5);
         jScrollPane1.setViewportView(jTextAreaStatusBar);
 
+        jTextAreaTextEditor.setColumns(20);
+        jTextAreaTextEditor.setRows(5);
+        scroll.setViewportView(jTextAreaTextEditor);
+
         javax.swing.GroupLayout jPanelMainScreenLayout = new javax.swing.GroupLayout(jPanelMainScreen);
         jPanelMainScreen.setLayout(jPanelMainScreenLayout);
         jPanelMainScreenLayout.setHorizontalGroup(
@@ -134,8 +211,8 @@ public class View extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMainScreenLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelMainScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(scroll)
                     .addComponent(jScrollPane1)
-                    .addComponent(jTextAreaTextEditor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextAreaMessages, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelMainScreenLayout.createSequentialGroup()
                         .addComponent(jButton_1_novo)
@@ -153,7 +230,7 @@ public class View extends javax.swing.JFrame {
                         .addComponent(jButtonCompilar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonEquipe)
-                        .addGap(0, 80, Short.MAX_VALUE)))
+                        .addGap(0, 177, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelMainScreenLayout.setVerticalGroup(
@@ -169,8 +246,8 @@ public class View extends javax.swing.JFrame {
                     .addComponent(jButton_1_novo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonAbrir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonEquipe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextAreaTextEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextAreaMessages, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
@@ -268,18 +345,21 @@ public class View extends javax.swing.JFrame {
 
     private void jButtonCopiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCopiarActionPerformed
         // TODO add your handling code here:
-        textCache = jTextAreaTextEditor.getSelectedText();
+//        textCache = jTextAreaTextEditor.getSelectedText();
+        jTextAreaTextEditor.copy();
     }//GEN-LAST:event_jButtonCopiarActionPerformed
 
     private void jButtonColarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonColarActionPerformed
         //gamb inserindo o texto no final, e não no cursor
-        jTextAreaTextEditor.append(textCache);
+//        jTextAreaTextEditor.append(textCache);
+        jTextAreaTextEditor.paste();
     }//GEN-LAST:event_jButtonColarActionPerformed
 
     private void jButtonRecortarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRecortarActionPerformed
-        textCache = jTextAreaTextEditor.getSelectedText();
-        String textOnEditor = jTextAreaTextEditor.getText();
-        
+//        textCache = jTextAreaTextEditor.getSelectedText();
+//        String textOnEditor = jTextAreaTextEditor.getText();
+        jTextAreaTextEditor.cut();
+
     }//GEN-LAST:event_jButtonRecortarActionPerformed
 
     /**
@@ -330,7 +410,8 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private java.awt.TextArea jTextAreaMessages;
     private javax.swing.JTextArea jTextAreaStatusBar;
-    private java.awt.TextArea jTextAreaTextEditor;
+    private javax.swing.JTextArea jTextAreaTextEditor;
+    private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables
 
     private void setStatus() {
