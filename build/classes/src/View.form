@@ -59,8 +59,8 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButtonCompilar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButtonEquipe" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="177" max="32767" attributes="0"/>
+                          <Component id="jButtonEquipe" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="17" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -79,7 +79,7 @@
                       <Component id="jButtonSalvar" max="32767" attributes="0"/>
                       <Component id="jButton_1_novo" alignment="1" max="32767" attributes="0"/>
                       <Component id="jButtonAbrir" alignment="1" max="32767" attributes="0"/>
-                      <Component id="jButtonEquipe" max="32767" attributes="0"/>
+                      <Component id="jButtonEquipe" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="scroll" min="-2" pref="271" max="-2" attributes="0"/>
@@ -95,7 +95,11 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="jButton_1_novo">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="C:\Users\ggiovanella\Documents\Furb\Compiladores_2019-1\src\src\1New.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="novo [ctrl-n]"/>
+            <Property name="autoscrolls" type="boolean" value="true"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_1_novoActionPerformed"/>
@@ -103,7 +107,11 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonAbrir">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="C:\Users\ggiovanella\Documents\Furb\Compiladores_2019-1\src\src\2Open.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="abrir [ctrl-o]"/>
+            <Property name="autoscrolls" type="boolean" value="true"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAbrirActionPerformed"/>
@@ -111,7 +119,11 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonSalvar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="C:\Users\ggiovanella\Documents\Furb\Compiladores_2019-1\src\src\3Save.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="salvar [ctrl-s]"/>
+            <Property name="autoscrolls" type="boolean" value="true"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSalvarActionPerformed"/>
@@ -119,7 +131,11 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonCopiar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="C:\Users\ggiovanella\Documents\Furb\Compiladores_2019-1\src\src\4Copy.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="copiar [ctrl-c]"/>
+            <Property name="autoscrolls" type="boolean" value="true"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCopiarActionPerformed"/>
@@ -127,7 +143,11 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonColar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="C:\Users\ggiovanella\Documents\Furb\Compiladores_2019-1\src\src\5Paste.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="colar [ctrl-v]"/>
+            <Property name="autoscrolls" type="boolean" value="true"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonColarActionPerformed"/>
@@ -135,7 +155,11 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonRecortar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="C:\Users\ggiovanella\Documents\Furb\Compiladores_2019-1\src\src\6Cut.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="recortar [ctrl-x]"/>
+            <Property name="autoscrolls" type="boolean" value="true"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRecortarActionPerformed"/>
@@ -143,7 +167,11 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonCompilar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="C:\Users\ggiovanella\Documents\Furb\Compiladores_2019-1\src\src\7Compile.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="compilar [F9]"/>
+            <Property name="autoscrolls" type="boolean" value="true"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCompilarActionPerformed"/>
@@ -151,7 +179,11 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonEquipe">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="C:\Users\ggiovanella\Documents\Furb\Compiladores_2019-1\src\src\8About.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="equipe [F1]"/>
+            <Property name="autoscrolls" type="boolean" value="true"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEquipeActionPerformed"/>

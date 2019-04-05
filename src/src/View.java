@@ -63,14 +63,14 @@ public class View extends javax.swing.JFrame {
         @Override
         public void actionPerformed(ActionEvent event) {
             switch (this.buttonPressed) {
-                case "F1": jButtonEquipeActionPerformed(event); break;
-                case "F9": jButtonCompilarActionPerformed(event); break;
-                case "CTRLC": jButtonCopiarActionPerformed(event); break;
-                case "CRTLX": jButtonRecortarActionPerformed(event); break;
-                case "CTRLV": jButtonColarActionPerformed(event); break;
-                case "CTRLO": jButtonAbrirActionPerformed(event); break;
                 case "CTRLN": jButton_1_novoActionPerformed(event); break;
+                case "CTRLO": jButtonAbrirActionPerformed(event); break;
                 case "CTRLS": jButtonSalvarActionPerformed(event); break;
+                case "CTRLC": jButtonCopiarActionPerformed(event); break;
+                case "CTRLV": jButtonColarActionPerformed(event); break;
+                case "CRTLX": jButtonRecortarActionPerformed(event); break;
+                case "F9": jButtonCompilarActionPerformed(event); break;
+                case "F1": jButtonEquipeActionPerformed(event); break;
             }
         }
 
@@ -78,9 +78,15 @@ public class View extends javax.swing.JFrame {
 
     public View() {
         initComponents();
-        //how to set up butto icons
-        // Icon icone = new ImageIcon("imgs\\1-novo.png");
-        // jButton_1_novo.setIcon(icone);
+        //set up button icons
+//         jButton_1_novo.setIcon(new ImageIcon("1New.png"));
+//         jButtonAbrir.setIcon(new ImageIcon("2Open.png"));
+//         jButtonSalvar.setIcon(new ImageIcon("3Save.png"));
+//         jButtonCopiar.setIcon(new ImageIcon("4Copy.png"));
+//         jButtonColar.setIcon(new ImageIcon("5Paste.png"));
+//         jButtonRecortar.setIcon(new ImageIcon("6Cut.png"));
+//         jButtonCompilar.setIcon(new ImageIcon("7Compile.png"));
+//         jButtonEquipe.setIcon(new ImageIcon("8About.png"));
 
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         //scroll.setHorizontalScrollBar(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -140,56 +146,72 @@ public class View extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jButton_1_novo.setIcon(new javax.swing.ImageIcon("C:\\Users\\ggiovanella\\Documents\\Furb\\Compiladores_2019-1\\src\\src\\1New.png")); // NOI18N
         jButton_1_novo.setText("novo [ctrl-n]");
+        jButton_1_novo.setAutoscrolls(true);
         jButton_1_novo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_1_novoActionPerformed(evt);
             }
         });
 
+        jButtonAbrir.setIcon(new javax.swing.ImageIcon("C:\\Users\\ggiovanella\\Documents\\Furb\\Compiladores_2019-1\\src\\src\\2Open.png")); // NOI18N
         jButtonAbrir.setText("abrir [ctrl-o]");
+        jButtonAbrir.setAutoscrolls(true);
         jButtonAbrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAbrirActionPerformed(evt);
             }
         });
 
+        jButtonSalvar.setIcon(new javax.swing.ImageIcon("C:\\Users\\ggiovanella\\Documents\\Furb\\Compiladores_2019-1\\src\\src\\3Save.png")); // NOI18N
         jButtonSalvar.setText("salvar [ctrl-s]");
+        jButtonSalvar.setAutoscrolls(true);
         jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSalvarActionPerformed(evt);
             }
         });
 
+        jButtonCopiar.setIcon(new javax.swing.ImageIcon("C:\\Users\\ggiovanella\\Documents\\Furb\\Compiladores_2019-1\\src\\src\\4Copy.png")); // NOI18N
         jButtonCopiar.setText("copiar [ctrl-c]");
+        jButtonCopiar.setAutoscrolls(true);
         jButtonCopiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCopiarActionPerformed(evt);
             }
         });
 
+        jButtonColar.setIcon(new javax.swing.ImageIcon("C:\\Users\\ggiovanella\\Documents\\Furb\\Compiladores_2019-1\\src\\src\\5Paste.png")); // NOI18N
         jButtonColar.setText("colar [ctrl-v]");
+        jButtonColar.setAutoscrolls(true);
         jButtonColar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonColarActionPerformed(evt);
             }
         });
 
+        jButtonRecortar.setIcon(new javax.swing.ImageIcon("C:\\Users\\ggiovanella\\Documents\\Furb\\Compiladores_2019-1\\src\\src\\6Cut.png")); // NOI18N
         jButtonRecortar.setText("recortar [ctrl-x]");
+        jButtonRecortar.setAutoscrolls(true);
         jButtonRecortar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRecortarActionPerformed(evt);
             }
         });
 
+        jButtonCompilar.setIcon(new javax.swing.ImageIcon("C:\\Users\\ggiovanella\\Documents\\Furb\\Compiladores_2019-1\\src\\src\\7Compile.png")); // NOI18N
         jButtonCompilar.setText("compilar [F9]");
+        jButtonCompilar.setAutoscrolls(true);
         jButtonCompilar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCompilarActionPerformed(evt);
             }
         });
 
+        jButtonEquipe.setIcon(new javax.swing.ImageIcon("C:\\Users\\ggiovanella\\Documents\\Furb\\Compiladores_2019-1\\src\\src\\8About.png")); // NOI18N
         jButtonEquipe.setText("equipe [F1]");
+        jButtonEquipe.setAutoscrolls(true);
         jButtonEquipe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEquipeActionPerformed(evt);
@@ -230,7 +252,7 @@ public class View extends javax.swing.JFrame {
                         .addComponent(jButtonCompilar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonEquipe)
-                        .addGap(0, 177, Short.MAX_VALUE)))
+                        .addGap(0, 17, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelMainScreenLayout.setVerticalGroup(
@@ -331,6 +353,7 @@ public class View extends javax.swing.JFrame {
                 }
             }
         }
+        jTextAreaMessages.append("Arquivo salvo\n");
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonCompilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCompilarActionPerformed

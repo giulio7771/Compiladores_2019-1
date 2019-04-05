@@ -19,7 +19,7 @@ public class Compilador_20191 {
         // TODO code application logic here
         System.out.println("Running");
         View view = new View();
-        view.setEnabled(true);
+        view.setVisible(true);
     }
     
 }
