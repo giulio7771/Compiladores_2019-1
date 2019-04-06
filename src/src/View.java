@@ -5,6 +5,7 @@
  */
 package src;
 
+import java.awt.Dimension;
 import java.awt.Event;
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
@@ -77,7 +78,12 @@ public class View extends javax.swing.JFrame {
     }
 
     public View() {
+        this.setMinimumSize(new Dimension(900, 600));
         initComponents();
+        NumberedBorder nb = new NumberedBorder();
+        jTextAreaTextEditor.setBorder(nb);
+        
+//        this.jPanel3 = new TextLineNumber(this.jTextArea2);;
         //set up button icons
 //         jButton_1_novo.setIcon(new ImageIcon("1New.png"));
 //         jButtonAbrir.setIcon(new ImageIcon("2Open.png"));
@@ -129,6 +135,7 @@ public class View extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jPanelMainScreen = new javax.swing.JPanel();
         jButton_1_novo = new javax.swing.JButton();
         jButtonAbrir = new javax.swing.JButton();
@@ -143,149 +150,208 @@ public class View extends javax.swing.JFrame {
         jTextAreaStatusBar = new javax.swing.JTextArea();
         scroll = new javax.swing.JScrollPane();
         jTextAreaTextEditor = new javax.swing.JTextArea();
+        jPanel2 = new javax.swing.JPanel();
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton_1_novo.setIcon(new javax.swing.ImageIcon("C:\\Users\\ggiovanella\\Documents\\Furb\\Compiladores_2019-1\\src\\src\\1New.png")); // NOI18N
+        jPanelMainScreen.setMinimumSize(new java.awt.Dimension(900, 600));
+        jPanelMainScreen.setPreferredSize(new java.awt.Dimension(900, 600));
+
+        jButton_1_novo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/1New.png"))); // NOI18N
         jButton_1_novo.setText("novo [ctrl-n]");
         jButton_1_novo.setAutoscrolls(true);
+        jButton_1_novo.setFocusCycleRoot(true);
+        jButton_1_novo.setHideActionText(true);
+        jButton_1_novo.setMaximumSize(new java.awt.Dimension(100, 70));
+        jButton_1_novo.setMinimumSize(new java.awt.Dimension(111, 70));
         jButton_1_novo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_1_novoActionPerformed(evt);
             }
         });
 
-        jButtonAbrir.setIcon(new javax.swing.ImageIcon("C:\\Users\\ggiovanella\\Documents\\Furb\\Compiladores_2019-1\\src\\src\\2Open.png")); // NOI18N
+        jButtonAbrir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/2Open.png"))); // NOI18N
         jButtonAbrir.setText("abrir [ctrl-o]");
         jButtonAbrir.setAutoscrolls(true);
+        jButtonAbrir.setMaximumSize(new java.awt.Dimension(111, 70));
+        jButtonAbrir.setMinimumSize(new java.awt.Dimension(111, 70));
         jButtonAbrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAbrirActionPerformed(evt);
             }
         });
 
-        jButtonSalvar.setIcon(new javax.swing.ImageIcon("C:\\Users\\ggiovanella\\Documents\\Furb\\Compiladores_2019-1\\src\\src\\3Save.png")); // NOI18N
+        jButtonSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/3Save.png"))); // NOI18N
         jButtonSalvar.setText("salvar [ctrl-s]");
         jButtonSalvar.setAutoscrolls(true);
+        jButtonSalvar.setMaximumSize(new java.awt.Dimension(117, 70));
+        jButtonSalvar.setMinimumSize(new java.awt.Dimension(117, 70));
         jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSalvarActionPerformed(evt);
             }
         });
 
-        jButtonCopiar.setIcon(new javax.swing.ImageIcon("C:\\Users\\ggiovanella\\Documents\\Furb\\Compiladores_2019-1\\src\\src\\4Copy.png")); // NOI18N
+        jButtonCopiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/4Copy.png"))); // NOI18N
         jButtonCopiar.setText("copiar [ctrl-c]");
         jButtonCopiar.setAutoscrolls(true);
+        jButtonCopiar.setMaximumSize(new java.awt.Dimension(117, 70));
+        jButtonCopiar.setMinimumSize(new java.awt.Dimension(117, 70));
         jButtonCopiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCopiarActionPerformed(evt);
             }
         });
 
-        jButtonColar.setIcon(new javax.swing.ImageIcon("C:\\Users\\ggiovanella\\Documents\\Furb\\Compiladores_2019-1\\src\\src\\5Paste.png")); // NOI18N
+        jButtonColar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/5Paste.png"))); // NOI18N
         jButtonColar.setText("colar [ctrl-v]");
         jButtonColar.setAutoscrolls(true);
+        jButtonColar.setMaximumSize(new java.awt.Dimension(111, 70));
+        jButtonColar.setMinimumSize(new java.awt.Dimension(111, 70));
         jButtonColar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonColarActionPerformed(evt);
             }
         });
 
-        jButtonRecortar.setIcon(new javax.swing.ImageIcon("C:\\Users\\ggiovanella\\Documents\\Furb\\Compiladores_2019-1\\src\\src\\6Cut.png")); // NOI18N
+        jButtonRecortar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/6Cut.png"))); // NOI18N
         jButtonRecortar.setText("recortar [ctrl-x]");
         jButtonRecortar.setAutoscrolls(true);
+        jButtonRecortar.setMaximumSize(new java.awt.Dimension(127, 70));
+        jButtonRecortar.setMinimumSize(new java.awt.Dimension(127, 70));
         jButtonRecortar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRecortarActionPerformed(evt);
             }
         });
 
-        jButtonCompilar.setIcon(new javax.swing.ImageIcon("C:\\Users\\ggiovanella\\Documents\\Furb\\Compiladores_2019-1\\src\\src\\7Compile.png")); // NOI18N
+        jButtonCompilar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/7Compile.png"))); // NOI18N
         jButtonCompilar.setText("compilar [F9]");
         jButtonCompilar.setAutoscrolls(true);
+        jButtonCompilar.setMaximumSize(new java.awt.Dimension(115, 70));
+        jButtonCompilar.setMinimumSize(new java.awt.Dimension(115, 70));
         jButtonCompilar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCompilarActionPerformed(evt);
             }
         });
 
-        jButtonEquipe.setIcon(new javax.swing.ImageIcon("C:\\Users\\ggiovanella\\Documents\\Furb\\Compiladores_2019-1\\src\\src\\8About.png")); // NOI18N
+        jButtonEquipe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/8About.png"))); // NOI18N
         jButtonEquipe.setText("equipe [F1]");
-        jButtonEquipe.setAutoscrolls(true);
+        jButtonEquipe.setMaximumSize(new java.awt.Dimension(107, 70));
+        jButtonEquipe.setMinimumSize(new java.awt.Dimension(107, 70));
         jButtonEquipe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEquipeActionPerformed(evt);
             }
         });
 
+        jTextAreaMessages.setMinimumSize(new java.awt.Dimension(900, 100));
+        jTextAreaMessages.setPreferredSize(new java.awt.Dimension(900, 100));
+
         jTextAreaStatusBar.setColumns(20);
         jTextAreaStatusBar.setRows(5);
+        jTextAreaStatusBar.setMinimumSize(new java.awt.Dimension(900, 30));
         jScrollPane1.setViewportView(jTextAreaStatusBar);
+
+        scroll.setMinimumSize(new java.awt.Dimension(900, 400));
 
         jTextAreaTextEditor.setColumns(20);
         jTextAreaTextEditor.setRows(5);
+        jTextAreaTextEditor.setMargin(new java.awt.Insets(0, 0, 0, 0));
         scroll.setViewportView(jTextAreaTextEditor);
+
+        jPanel2.setMinimumSize(new java.awt.Dimension(900, 70));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanelMainScreenLayout = new javax.swing.GroupLayout(jPanelMainScreen);
         jPanelMainScreen.setLayout(jPanelMainScreenLayout);
         jPanelMainScreenLayout.setHorizontalGroup(
             jPanelMainScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMainScreenLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelMainScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(scroll)
+            .addGroup(jPanelMainScreenLayout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelMainScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelMainScreenLayout.createSequentialGroup()
+                        .addComponent(jButton_1_novo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonAbrir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonCopiar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonColar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonRecortar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonCompilar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonEquipe, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(13, 13, 13))
+            .addGroup(jPanelMainScreenLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(jPanelMainScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1)
-                    .addComponent(jTextAreaMessages, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelMainScreenLayout.createSequentialGroup()
-                        .addComponent(jButton_1_novo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonAbrir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonSalvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonCopiar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonColar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonRecortar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonCompilar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonEquipe)
-                        .addGap(0, 17, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(jTextAreaMessages, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         jPanelMainScreenLayout.setVerticalGroup(
             jPanelMainScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMainScreenLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelMainScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonCompilar, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
-                    .addComponent(jButtonRecortar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonColar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonCopiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelMainScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_1_novo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAbrir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton_1_novo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonAbrir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonCopiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonColar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonRecortar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonCompilar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonEquipe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelMainScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelMainScreenLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelMainScreenLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextAreaMessages, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jTextAreaMessages, javax.swing.GroupLayout.PREFERRED_SIZE, 68, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMainScreen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelMainScreen, javax.swing.GroupLayout.PREFERRED_SIZE, 919, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMainScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelMainScreen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -313,7 +379,7 @@ public class View extends javax.swing.JFrame {
             //gamb para apresentar número da linha
             int lineNumber = 1;
             while (sc.hasNextLine()) {
-                jTextAreaTextEditor.append((lineNumber++) + "|   " + sc.nextLine() + "\n");
+                jTextAreaTextEditor.append(sc.nextLine() + "\n");
             }
             //set status bar
             openedFile = file;
@@ -429,6 +495,8 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JButton jButtonRecortar;
     private javax.swing.JButton jButtonSalvar;
     private javax.swing.JButton jButton_1_novo;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelMainScreen;
     private javax.swing.JScrollPane jScrollPane1;
     private java.awt.TextArea jTextAreaMessages;
