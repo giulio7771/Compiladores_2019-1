@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package src;
-
 import java.awt.Dimension;
 import java.awt.Event;
 import java.awt.event.ActionEvent;
@@ -97,7 +96,6 @@ public class View extends javax.swing.JFrame {
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         //scroll.setHorizontalScrollBar(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         jTextAreaMessages.setEditable(false);
-        jTextAreaMessages.setEnabled(false);
         jTextAreaStatusBar.setEditable(false);
 //        jTextAreaTextEditor.setBorder(new NumberedBorder());
         setUpShortcutKeys(jPanelMainScreen);
@@ -173,6 +171,7 @@ public class View extends javax.swing.JFrame {
         jButton_1_novo.setAutoscrolls(true);
         jButton_1_novo.setFocusCycleRoot(true);
         jButton_1_novo.setHideActionText(true);
+        jButton_1_novo.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jButton_1_novo.setMaximumSize(new java.awt.Dimension(100, 70));
         jButton_1_novo.setMinimumSize(new java.awt.Dimension(111, 70));
         jButton_1_novo.addActionListener(new java.awt.event.ActionListener() {
@@ -184,6 +183,7 @@ public class View extends javax.swing.JFrame {
         jButtonAbrir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/2Open.png"))); // NOI18N
         jButtonAbrir.setText("abrir [ctrl-o]");
         jButtonAbrir.setAutoscrolls(true);
+        jButtonAbrir.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jButtonAbrir.setMaximumSize(new java.awt.Dimension(111, 70));
         jButtonAbrir.setMinimumSize(new java.awt.Dimension(111, 70));
         jButtonAbrir.addActionListener(new java.awt.event.ActionListener() {
@@ -195,6 +195,7 @@ public class View extends javax.swing.JFrame {
         jButtonSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/3Save.png"))); // NOI18N
         jButtonSalvar.setText("salvar [ctrl-s]");
         jButtonSalvar.setAutoscrolls(true);
+        jButtonSalvar.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jButtonSalvar.setMaximumSize(new java.awt.Dimension(117, 70));
         jButtonSalvar.setMinimumSize(new java.awt.Dimension(117, 70));
         jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -206,6 +207,7 @@ public class View extends javax.swing.JFrame {
         jButtonCopiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/4Copy.png"))); // NOI18N
         jButtonCopiar.setText("copiar [ctrl-c]");
         jButtonCopiar.setAutoscrolls(true);
+        jButtonCopiar.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jButtonCopiar.setMaximumSize(new java.awt.Dimension(117, 70));
         jButtonCopiar.setMinimumSize(new java.awt.Dimension(117, 70));
         jButtonCopiar.addActionListener(new java.awt.event.ActionListener() {
@@ -217,6 +219,7 @@ public class View extends javax.swing.JFrame {
         jButtonColar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/5Paste.png"))); // NOI18N
         jButtonColar.setText("colar [ctrl-v]");
         jButtonColar.setAutoscrolls(true);
+        jButtonColar.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jButtonColar.setMaximumSize(new java.awt.Dimension(111, 70));
         jButtonColar.setMinimumSize(new java.awt.Dimension(111, 70));
         jButtonColar.addActionListener(new java.awt.event.ActionListener() {
@@ -228,6 +231,7 @@ public class View extends javax.swing.JFrame {
         jButtonRecortar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/6Cut.png"))); // NOI18N
         jButtonRecortar.setText("recortar [ctrl-x]");
         jButtonRecortar.setAutoscrolls(true);
+        jButtonRecortar.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jButtonRecortar.setMaximumSize(new java.awt.Dimension(127, 70));
         jButtonRecortar.setMinimumSize(new java.awt.Dimension(127, 70));
         jButtonRecortar.addActionListener(new java.awt.event.ActionListener() {
@@ -239,6 +243,7 @@ public class View extends javax.swing.JFrame {
         jButtonCompilar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/7Compile.png"))); // NOI18N
         jButtonCompilar.setText("compilar [F9]");
         jButtonCompilar.setAutoscrolls(true);
+        jButtonCompilar.setMargin(new java.awt.Insets(1, 1, 1, 1));
         jButtonCompilar.setMaximumSize(new java.awt.Dimension(115, 70));
         jButtonCompilar.setMinimumSize(new java.awt.Dimension(115, 70));
         jButtonCompilar.addActionListener(new java.awt.event.ActionListener() {
@@ -249,6 +254,7 @@ public class View extends javax.swing.JFrame {
 
         jButtonEquipe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/8About.png"))); // NOI18N
         jButtonEquipe.setText("equipe [F1]");
+        jButtonEquipe.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jButtonEquipe.setMaximumSize(new java.awt.Dimension(107, 70));
         jButtonEquipe.setMinimumSize(new java.awt.Dimension(107, 70));
         jButtonEquipe.addActionListener(new java.awt.event.ActionListener() {
@@ -257,8 +263,8 @@ public class View extends javax.swing.JFrame {
             }
         });
 
+        jTextAreaMessages.setEditable(false);
         jTextAreaMessages.setMinimumSize(new java.awt.Dimension(900, 100));
-        jTextAreaMessages.setPreferredSize(new java.awt.Dimension(900, 100));
 
         jTextAreaStatusBar.setColumns(20);
         jTextAreaStatusBar.setRows(5);
@@ -298,25 +304,25 @@ public class View extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonAbrir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonCopiar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonCopiar, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonColar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonRecortar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonCompilar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonRecortar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonCompilar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonEquipe, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(13, 13, 13))
+                .addGap(45, 45, 45))
             .addGroup(jPanelMainScreenLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addGroup(jPanelMainScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
                     .addComponent(jTextAreaMessages, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addGap(29, 29, 29))
         );
         jPanelMainScreenLayout.setVerticalGroup(
             jPanelMainScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
