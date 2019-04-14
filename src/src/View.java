@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package src;
+
+import gals.*;
+import gals.Token;
 import java.awt.Dimension;
 import java.awt.Event;
 import java.awt.event.ActionEvent;
@@ -16,6 +19,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -42,7 +47,7 @@ public class View extends javax.swing.JFrame {
      */
     private static File openedFile = null;
     private static String textCache = "";
-    
+
     private final Shortcut aOpen = new Shortcut("CTRLO");
     private final Shortcut aNew = new Shortcut("CTRLN");
     private final Shortcut aSave = new Shortcut("CTRLS");
@@ -63,14 +68,30 @@ public class View extends javax.swing.JFrame {
         @Override
         public void actionPerformed(ActionEvent event) {
             switch (this.buttonPressed) {
-                case "CTRLN": jButton_1_novoActionPerformed(event); break;
-                case "CTRLO": jButtonAbrirActionPerformed(event); break;
-                case "CTRLS": jButtonSalvarActionPerformed(event); break;
-                case "CTRLC": jButtonCopiarActionPerformed(event); break;
-                case "CTRLV": jButtonColarActionPerformed(event); break;
-                case "CRTLX": jButtonRecortarActionPerformed(event); break;
-                case "F9": jButtonCompilarActionPerformed(event); break;
-                case "F1": jButtonEquipeActionPerformed(event); break;
+                case "CTRLN":
+                    jButton_1_novoActionPerformed(event);
+                    break;
+                case "CTRLO":
+                    jButtonAbrirActionPerformed(event);
+                    break;
+                case "CTRLS":
+                    jButtonSalvarActionPerformed(event);
+                    break;
+                case "CTRLC":
+                    jButtonCopiarActionPerformed(event);
+                    break;
+                case "CTRLV":
+                    jButtonColarActionPerformed(event);
+                    break;
+                case "CRTLX":
+                    jButtonRecortarActionPerformed(event);
+                    break;
+                case "F9":
+                    jButtonCompilarActionPerformed(event);
+                    break;
+                case "F1":
+                    jButtonEquipeActionPerformed(event);
+                    break;
             }
         }
 
@@ -81,7 +102,7 @@ public class View extends javax.swing.JFrame {
         initComponents();
         NumberedBorder nb = new NumberedBorder();
         jTextAreaTextEditor.setBorder(nb);
-        
+
 //        this.jPanel3 = new TextLineNumber(this.jTextArea2);;
         //set up button icons
 //         jButton_1_novo.setIcon(new ImageIcon("1New.png"));
@@ -92,7 +113,6 @@ public class View extends javax.swing.JFrame {
 //         jButtonRecortar.setIcon(new ImageIcon("6Cut.png"));
 //         jButtonCompilar.setIcon(new ImageIcon("7Compile.png"));
 //         jButtonEquipe.setIcon(new ImageIcon("8About.png"));
-
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         //scroll.setHorizontalScrollBar(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         jTextAreaMessages.setEditable(false);
@@ -100,7 +120,8 @@ public class View extends javax.swing.JFrame {
 //        jTextAreaTextEditor.setBorder(new NumberedBorder());
         setUpShortcutKeys(jPanelMainScreen);
     }
-    public void setUpShortcutKeys(JPanel panel){
+
+    public void setUpShortcutKeys(JPanel panel) {
         ActionMap actionMap = panel.getActionMap();
         actionMap.put("bAbout", aAbout);
         actionMap.put("bNew", aNew);
@@ -120,7 +141,6 @@ public class View extends javax.swing.JFrame {
         imap.put(KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_MASK), "bCopy");
         imap.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, InputEvent.CTRL_MASK), "bPaste");
         imap.put(KeyStroke.getKeyStroke("F9"), "bCompile");
-        
 
     }
 
@@ -429,8 +449,47 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonCompilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCompilarActionPerformed
-        // TODO add your handling code here:
-        jTextAreaMessages.append("Compilação de programas ainda não foi implementada\n");
+        Lexico lexico = new Lexico();
+        lexico.setInput(jTextAreaTextEditor.getText());
+        try {
+            List<Token> tokenList = new LinkedList<>();
+            List<Integer> tokenLine = new LinkedList<>();
+            List<String> tokenClass = new LinkedList<>();
+            List<String> tokenLexeme = new LinkedList<>();
+            Token token = null;
+            while ((token = lexico.nextToken()) != null) {
+                tokenList.add(token);
+                if (token.getId() >= 29 && token.getId() <= 48) {
+                    //simbolo especial
+                    tokenClass.add("Símbolo Especial");
+                } else if(token.getId() >= 7 && token.getId() <= 28){
+                    //palavra reservada
+                    tokenClass.add("Palavra Reservada");
+                }else{
+                    switch (token.getId()) {
+                        case Constants.t_identificador:
+                            tokenClass.add("Identificador");
+                            break;
+                        case Constants.t_constante_inteira:
+                            tokenClass.add("Constante Inteira");
+                            break;   
+                        case Constants.t_constante_real:
+                            tokenClass.add("Constante Real");
+                            break;   
+                        case Constants.t_constante_string:
+                            tokenClass.add("Constante String");
+                            break;   
+                        case Constants.t_constante_caracter:
+                            tokenClass.add("Constante Caracter");
+                            break;
+                        default:
+                            //lexema não especificado
+                    }
+                }
+            }
+        } catch (LexicalError ex) {
+            jTextAreaMessages.append("Erro léxico");
+        }
     }//GEN-LAST:event_jButtonCompilarActionPerformed
 
     private void jButtonEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEquipeActionPerformed
