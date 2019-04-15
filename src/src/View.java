@@ -452,6 +452,7 @@ public class View extends javax.swing.JFrame {
         Lexico lexico = new Lexico();
         lexico.setInput(jTextAreaTextEditor.getText());
         try {
+            Integer line = new Integer(0);
             List<Token> tokenList = new LinkedList<>();
             List<Integer> tokenLine = new LinkedList<>();
             List<String> tokenClass = new LinkedList<>();
