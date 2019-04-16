@@ -38,13 +38,10 @@ import javax.swing.text.DefaultEditorKit;
 
 /**
  *
- * @author giulio
+ * @author Giulio Giovanella
  */
 public class View extends javax.swing.JFrame {
 
-    /**
-     * Creates new form View
-     */
     private static File openedFile = null;
     private static String textCache = "";
 
@@ -448,18 +445,8 @@ public class View extends javax.swing.JFrame {
         jTextAreaMessages.append("Arquivo salvo\n");
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
-    private void jButtonCompilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCompilarActionPerformed
-        Lexico lexico = new Lexico();
-        lexico.setInput(jTextAreaTextEditor.getText());
-        try {
-            List<Token> tokenList = new LinkedList<>();
-            List<Integer> tokenLine = new LinkedList<>();
-            List<String> tokenClass = new LinkedList<>();
-            List<String> tokenLexeme = new LinkedList<>();
-            Token token = null;
-            while ((token = lexico.nextToken()) != null) {
-                tokenList.add(token);
-                if (token.getId() >= 29 && token.getId() <= 48) {
+    public void setTokenClass(Token token, List<String> tokenClass){
+              if (token.getId() >= 29 && token.getId() <= 48) {
                     //simbolo especial
                     tokenClass.add("Símbolo Especial");
                 } else if(token.getId() >= 7 && token.getId() <= 28){
@@ -486,6 +473,37 @@ public class View extends javax.swing.JFrame {
                             //lexema não especificado
                     }
                 }
+    }
+    public Integer setTokenLine(Integer line, List<Integer> tokenLine, String[] textLine, Token token){
+         while(true){
+                    if(textLine[line].contains(token.getLexeme())){
+                        tokenLine.add(line);
+                        break;
+                    }else{
+                        line++;
+                    }
+                }
+         return line;
+    }
+    private void jButtonCompilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCompilarActionPerformed
+        //Compilar
+        Lexico lexico = new Lexico();
+        lexico.setInput(jTextAreaTextEditor.getText());
+        String inputText = jTextAreaTextEditor.getText();
+        String[] textLine = jTextAreaTextEditor.getText().split("\n");
+        try {
+            Integer line = new Integer(0);
+            List<Token> tokenList = new LinkedList<>();
+            List<Integer> tokenLine = new LinkedList<>();
+            List<String> tokenClass = new LinkedList<>();
+            Token token = null;
+            while ((token = lexico.nextToken()) != null) {
+                tokenList.add(token);
+                setTokenClass(token, tokenClass);
+                line  = setTokenLine(line, tokenLine, textLine, token);
+            }
+            for (int i = 0; i < tokenClass.size(); i++) {
+                jTextAreaMessages.append(tokenLine.get(i)+"\t"+tokenClass.get(i)+"\t"+tokenList.get(i).getLexeme()+"\n");
             }
         } catch (LexicalError ex) {
             jTextAreaMessages.append("Erro léxico");
