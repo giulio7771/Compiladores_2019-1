@@ -478,6 +478,7 @@ public class View extends javax.swing.JFrame {
          while(true){
                     if(textLine[line].contains(token.getLexeme())){
                         tokenLine.add(line);
+                        textLine[line] = textLine[line].replace(token.getLexeme(), "");
                         break;
                     }else{
                         line++;
@@ -489,7 +490,6 @@ public class View extends javax.swing.JFrame {
         //Compilar
         Lexico lexico = new Lexico();
         lexico.setInput(jTextAreaTextEditor.getText());
-        String inputText = jTextAreaTextEditor.getText();
         String[] textLine = jTextAreaTextEditor.getText().split("\n");
         try {
             Integer line = new Integer(0);
@@ -497,16 +497,23 @@ public class View extends javax.swing.JFrame {
             List<Integer> tokenLine = new LinkedList<>();
             List<String> tokenClass = new LinkedList<>();
             Token token = null;
+            boolean erro = false;
             while ((token = lexico.nextToken()) != null) {
-                tokenList.add(token);
-                setTokenClass(token, tokenClass);
-                line  = setTokenLine(line, tokenLine, textLine, token);
+                
+                    tokenList.add(token);
+                    setTokenClass(token, tokenClass);
+                    line  = setTokenLine(line, tokenLine, textLine, token);
+                
             }
-            for (int i = 0; i < tokenClass.size(); i++) {
-                jTextAreaMessages.append(tokenLine.get(i)+"\t"+tokenClass.get(i)+"\t"+tokenList.get(i).getLexeme()+"\n");
+            if(!erro){
+                for (int i = 0; i < tokenClass.size(); i++) {
+                    jTextAreaMessages.append((tokenLine.get(i)+1)+"\t"+tokenClass.get(i)+"\t"+tokenList.get(i).getLexeme()+"\n");
+                }
+                jTextAreaMessages.append("Programa Combilado com sucesso\n");
             }
         } catch (LexicalError ex) {
-            jTextAreaMessages.append("Erro léxico");
+            jTextAreaMessages.append("Erro léxico 2");
+            ex.printStackTrace();
         }
     }//GEN-LAST:event_jButtonCompilarActionPerformed
 
