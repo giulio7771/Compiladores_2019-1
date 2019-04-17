@@ -512,8 +512,10 @@ public class View extends javax.swing.JFrame {
                 jTextAreaMessages.append("Programa Combilado com sucesso\n");
             }
         } catch (LexicalError ex) {
-            jTextAreaMessages.append("Erro léxico 2");
             ex.printStackTrace();
+            jTextAreaMessages.append("Falha ao compilar\n"+ex.getMessage()+":");
+            
+            
         }
     }//GEN-LAST:event_jButtonCompilarActionPerformed
 
