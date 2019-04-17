@@ -17,9 +17,9 @@ public class Compilador_20191 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("");
+        System.out.println("Running");
         View view = new View();
-        view.setEnabled(true);
+        view.setVisible(true);
     }
     
 }
