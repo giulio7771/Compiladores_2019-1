@@ -4,6 +4,7 @@ public class Lexico implements Constants
 {
     private int position;
     private String input;
+    private char lastChar;
 
     public Lexico()
     {
@@ -15,6 +16,9 @@ public class Lexico implements Constants
         setInput(input);
     }
 
+    public char getLastChar(){
+        return this.lastChar;
+    }
     public void setInput(String input)
     {
         this.input = input;
@@ -40,8 +44,9 @@ public class Lexico implements Constants
 
         while (hasInput())
         {
+            lastChar = nextChar();
             lastState = state;
-            state = nextState(nextChar(), state);
+            state = nextState(lastChar, state);
 
             if (state < 0)
                 break;
