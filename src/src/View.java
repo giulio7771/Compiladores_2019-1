@@ -493,65 +493,79 @@ public class View extends javax.swing.JFrame {
     }
     private void jButtonCompilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCompilarActionPerformed
         //Compilar
-        Lexico lexico = new Lexico();
-
         String[] textLine = jTextAreaTextEditor.getText().split("\n");
-
-        Token token = null;
-        Integer line = new Integer(0);
-        List<Token> tokenList = new LinkedList<>();
-        List<Integer> tokenLine = new LinkedList<>();
-        List<String> tokenClass = new LinkedList<>();
-        int nextTokenIteration = 0;
-
-        boolean erro = false;
-        for (line = 0; line < textLine.length; line++) {
-
-            lexico.setInput(textLine[line]);
-            try {
-                while ((token = lexico.nextToken()) != null) {
-                    nextTokenIteration++;
-                    tokenList.add(token);
-                    boolean found = setTokenClass(token, tokenClass);
-                    if (!found) {
-                        break;
-                    }
-                    tokenLine.add(line);
-
+        boolean program = false;
+        for (String i : textLine) {
+            i.replaceAll(" ", "");
+            for (int j = 0; j < i.length(); j++) {
+                String c = i.substring(j, j+1);
+                if(!c.equals("") && !c.equals("\t") && !c.equals("\n") && !c.equals(" ")){
+                    program = true;
+                    break;
                 }
-            } catch (LexicalError ex) {
-                erro = true;
-                System.out.println("Exception: " + ex.getMessage());
-                System.out.println("nextTokenIteration: " + nextTokenIteration);
-                String msg = ex.getMessage();
-                line++;
-                char lexeme = lexico.getLastChar();
-                System.out.println("Last char: " + lexeme);
-                System.out.println("Line: " + line);
-                //jTextAreaMessages.append("Falha ao compilar\n"+ex.getMessage());
-                String errorOutput = "";
-                if (msg.equals("Caractere inválido")) {
-                    errorOutput = String.format("Erro na linha %d: %c símbolo inválido\n", line, lexeme);
-                } else if (msg.equals("Erro identificando constante_caracter")) {
-                    errorOutput = String.format("Erro na linha %d: constante caractere inválida\n", line);
-                } else if (msg.equals("Erro identificando constante_string")) {
-                    errorOutput = String.format("Erro na linha %d: constante string inválida\n", line);
-                } else if (msg.equals("Erro identificando <ignorar>")) {
-                    errorOutput = String.format("Erro. Linha %d. comentário de bloco inválido ou não finalizado.", line);
-                }
-                System.out.println("Error output: " + errorOutput);
-                jTextAreaMessages.append(errorOutput + "\n");
-                break;
             }
-           
-
         }
-         if (!erro) {
+        if (program) {
+            Lexico lexico = new Lexico();
+
+            Token token = null;
+            Integer line = new Integer(0);
+            List<Token> tokenList = new LinkedList<>();
+            List<Integer> tokenLine = new LinkedList<>();
+            List<String> tokenClass = new LinkedList<>();
+            int nextTokenIteration = 0;
+
+            boolean erro = false;
+            for (line = 0; line < textLine.length; line++) {
+
+                lexico.setInput(textLine[line]);
+                try {
+                    while ((token = lexico.nextToken()) != null) {
+                        nextTokenIteration++;
+                        tokenList.add(token);
+                        boolean found = setTokenClass(token, tokenClass);
+                        if (!found) {
+                            break;
+                        }
+                        tokenLine.add(line);
+
+                    }
+                } catch (LexicalError ex) {
+                    erro = true;
+                    System.out.println("Exception: " + ex.getMessage());
+                    System.out.println("nextTokenIteration: " + nextTokenIteration);
+                    String msg = ex.getMessage();
+                    line++;
+                    char lexeme = lexico.getLastChar();
+                    System.out.println("Last char: " + lexeme);
+                    System.out.println("Line: " + line);
+                    //jTextAreaMessages.append("Falha ao compilar\n"+ex.getMessage());
+                    String errorOutput = "";
+                    if (msg.equals("Caractere inválido")) {
+                        errorOutput = String.format("Erro na linha %d: %c símbolo inválido\n", line, lexeme);
+                    } else if (msg.equals("Erro identificando constante_caracter")) {
+                        errorOutput = String.format("Erro na linha %d: constante caractere inválida\n", line);
+                    } else if (msg.equals("Erro identificando constante_string")) {
+                        errorOutput = String.format("Erro na linha %d: constante string inválida\n", line);
+                    } else if (msg.equals("Erro identificando <ignorar>")) {
+                        errorOutput = String.format("Erro na Linha %d. comentário de bloco inválido ou não finalizado.", line);
+                    }
+                    System.out.println("Error output: " + errorOutput);
+                    jTextAreaMessages.append(errorOutput + "\nFalha ao compilar\n");
+                    break;
+                }
+
+            }
+            if (!erro) {
+                jTextAreaMessages.append("\nLinha\t\tClasse\t\tLexema\n");
                 for (int i = 0; i < tokenClass.size(); i++) {
-                    jTextAreaMessages.append((tokenLine.get(i) + 1) + "\t" + tokenClass.get(i) + "\t" + tokenList.get(i).getLexeme() + "\n");
+                    jTextAreaMessages.append((tokenLine.get(i) + 1) + "\t\t" + tokenClass.get(i) + "\t\t" + tokenList.get(i).getLexeme() + "\n");
                 }
                 jTextAreaMessages.append("Programa Combilado com sucesso\n\n");
             }
+        } else {
+            jTextAreaMessages.append("Nenhum programa para compilar\n");
+        }
     }//GEN-LAST:event_jButtonCompilarActionPerformed
 
     private void jButtonEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEquipeActionPerformed
