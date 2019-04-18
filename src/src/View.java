@@ -445,103 +445,113 @@ public class View extends javax.swing.JFrame {
         jTextAreaMessages.append("Arquivo salvo\n");
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
-    public boolean setTokenClass(Token token, List<String> tokenClass){
-              if (token.getId() >= 29 && token.getId() <= 48) {
-                    //simbolo especial
-                    tokenClass.add("Símbolo Especial");
+    public boolean setTokenClass(Token token, List<String> tokenClass) {
+        if (token.getId() >= 29 && token.getId() <= 48) {
+            //simbolo especial
+            tokenClass.add("Símbolo Especial");
+            return true;
+        } else if (token.getId() >= 7 && token.getId() <= 28) {
+            //palavra reservada
+            tokenClass.add("Palavra Reservada");
+            return true;
+        } else {
+            switch (token.getId()) {
+                case Constants.t_identificador:
+                    tokenClass.add("Identificador");
                     return true;
-                } else if(token.getId() >= 7 && token.getId() <= 28){
-                    //palavra reservada
-                    tokenClass.add("Palavra Reservada");
+                case Constants.t_constante_inteira:
+                    tokenClass.add("Constante Inteira");
                     return true;
-                }else{
-                    switch (token.getId()) {
-                        case Constants.t_identificador:
-                            tokenClass.add("Identificador");
-                            return true;
-                        case Constants.t_constante_inteira:
-                            tokenClass.add("Constante Inteira");
-                            return true;   
-                        case Constants.t_constante_real:
-                            tokenClass.add("Constante Real");
-                            return true;   
-                        case Constants.t_constante_string:
-                            tokenClass.add("Constante String");
-                            return true;  
-                        case Constants.t_constante_caracter:
-                            tokenClass.add("Constante Caracter");
-                            return true;
-                        default:
-                            //lexema não especificado
-                            jTextAreaMessages.append("Caracter não expecificado: "+token.getLexeme());
-                            return false;
-                    }
-                }
+                case Constants.t_constante_real:
+                    tokenClass.add("Constante Real");
+                    return true;
+                case Constants.t_constante_string:
+                    tokenClass.add("Constante String");
+                    return true;
+                case Constants.t_constante_caracter:
+                    tokenClass.add("Constante Caracter");
+                    return true;
+                default:
+                    //lexema não especificado
+                    jTextAreaMessages.append("Caracter não expecificado: " + token.getLexeme());
+                    return false;
+            }
+        }
     }
-    public Integer setTokenLine(Integer line, List<Integer> tokenLine, String[] textLine, Token token){
-         while(true){
-                    if(textLine[line].contains(token.getLexeme())){
-                        tokenLine.add(line);
-                        textLine[line] = textLine[line].replace(token.getLexeme(), "");
-                        break;
-                    }else{
-                        line++;
-                    }
-                }
-         return line;
+
+    public Integer setTokenLine(Integer line, List<Integer> tokenLine, String[] textLine, Token token) {
+        while (true) {
+            if (textLine[line].contains(token.getLexeme())) {
+                tokenLine.add(line);
+                textLine[line] = textLine[line].replace(token.getLexeme(), "");
+                break;
+            } else {
+                line++;
+            }
+        }
+        return line;
     }
     private void jButtonCompilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCompilarActionPerformed
         //Compilar
         Lexico lexico = new Lexico();
-        lexico.setInput(jTextAreaTextEditor.getText());
+
         String[] textLine = jTextAreaTextEditor.getText().split("\n");
+
         Token token = null;
         Integer line = new Integer(0);
         List<Token> tokenList = new LinkedList<>();
         List<Integer> tokenLine = new LinkedList<>();
         List<String> tokenClass = new LinkedList<>();
         int nextTokenIteration = 0;
-        try {
-            boolean erro = false;
-            while ((token = lexico.nextToken()) != null) {
-                nextTokenIteration++;
+
+        boolean erro = false;
+        for (line = 0; line < textLine.length; line++) {
+
+            lexico.setInput(textLine[line]);
+            try {
+                while ((token = lexico.nextToken()) != null) {
+                    nextTokenIteration++;
                     tokenList.add(token);
                     boolean found = setTokenClass(token, tokenClass);
-                    if(!found){
+                    if (!found) {
                         break;
                     }
-                    line  = setTokenLine(line, tokenLine, textLine, token);
-                
-            }
-            if(!erro){
-                for (int i = 0; i < tokenClass.size(); i++) {
-                    jTextAreaMessages.append((tokenLine.get(i)+1)+"\t"+tokenClass.get(i)+"\t"+tokenList.get(i).getLexeme()+"\n");
+                    tokenLine.add(line);
+
                 }
-                jTextAreaMessages.append("Programa Combilado com sucesso\n");
+            } catch (LexicalError ex) {
+                erro = true;
+                System.out.println("Exception: " + ex.getMessage());
+                System.out.println("nextTokenIteration: " + nextTokenIteration);
+                String msg = ex.getMessage();
+                line++;
+                char lexeme = lexico.getLastChar();
+                System.out.println("Last char: " + lexeme);
+                System.out.println("Line: " + line);
+                //jTextAreaMessages.append("Falha ao compilar\n"+ex.getMessage());
+                String errorOutput = "";
+                if (msg.equals("Caractere inválido")) {
+                    errorOutput = String.format("Erro na linha %d: %c símbolo inválido\n", line, lexeme);
+                } else if (msg.equals("Erro identificando constante_caracter")) {
+                    errorOutput = String.format("Erro na linha %d: constante caractere inválida\n", line);
+                } else if (msg.equals("Erro identificando constante_string")) {
+                    errorOutput = String.format("Erro na linha %d: constante string inválida\n", line);
+                } else if (msg.equals("Erro identificando <ignorar>")) {
+                    errorOutput = String.format("Erro. Linha %d. comentário de bloco inválido ou não finalizado.", line);
+                }
+                System.out.println("Error output: " + errorOutput);
+                jTextAreaMessages.append(errorOutput + "\n");
+                break;
             }
-        } catch (LexicalError ex) {
-            System.out.println("Exception: "+ex.getMessage());
-            System.out.println("nextTokenIteration: "+nextTokenIteration);
-            String msg = ex.getMessage();
-            line++;
-            char lexeme = lexico.getLastChar(); 
-            System.out.println("Last char: "+lexeme);
-            System.out.println("Line: "+line);
-            //jTextAreaMessages.append("Falha ao compilar\n"+ex.getMessage());
-            String errorOutput = "";
-            if (msg.equals("Caractere inválido")) {
-                errorOutput = String.format("Erro na linha %d: %c símbolo inválido\n", line, lexeme);
-            } else if (msg.equals("Erro identificando constante_caracter")) {
-                errorOutput = String.format("Erro na linha %d: constante caractere inválida\n", line);
-            } else if (msg.equals("Erro identificando constante_string")) {
-                errorOutput = String.format("Erro na linha %d: constante string inválida\n", line);
-            } else if (msg.equals("Erro identificando <ignorar>")) {
-                errorOutput = String.format("Erro. Linha %d. comentário de bloco inválido ou não finalizado.", line);
-            }
-            System.out.println("Error output: "+errorOutput);
-            jTextAreaMessages.append(errorOutput+"\n");
-            
+           
+
         }
+         if (!erro) {
+                for (int i = 0; i < tokenClass.size(); i++) {
+                    jTextAreaMessages.append((tokenLine.get(i) + 1) + "\t" + tokenClass.get(i) + "\t" + tokenList.get(i).getLexeme() + "\n");
+                }
+                jTextAreaMessages.append("Programa Combilado com sucesso\n\n");
+            }
     }//GEN-LAST:event_jButtonCompilarActionPerformed
 
     private void jButtonEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEquipeActionPerformed
