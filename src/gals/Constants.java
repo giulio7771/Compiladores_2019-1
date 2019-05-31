@@ -1,6 +1,6 @@
 package gals;
 
-public interface Constants extends ScannerConstants
+public interface Constants extends ScannerConstants, ParserConstants
 {
     int EPSILON  = 0;
     int DOLLAR   = 1;
@@ -28,10 +28,10 @@ public interface Constants extends ScannerConstants
     int t_read = 22;
     int t_string = 23;
     int t_true = 24;
-    int t_voidentificador = 25;
-    int t_whileFalseDo = 26;
-    int t_whileTrueDo = 27;
-    int t_write = 28;
+    int t_whileFalseDo = 25;
+    int t_whileTrueDo = 26;
+    int t_write = 27;
+    int t_void = 28;
     int t_TOKEN_29 = 29; //"("
     int t_TOKEN_30 = 30; //")"
     int t_TOKEN_31 = 31; //"=="

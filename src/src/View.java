@@ -445,79 +445,79 @@ public class View extends javax.swing.JFrame {
         jTextAreaMessages.append("Arquivo salvo\n");
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
-    public void setTokenClass(Token token, List<String> tokenClass){
-              if (token.getId() >= 29 && token.getId() <= 48) {
-                    //simbolo especial
-                    tokenClass.add("Símbolo Especial");
-                } else if(token.getId() >= 7 && token.getId() <= 28){
-                    //palavra reservada
-                    tokenClass.add("Palavra Reservada");
-                }else{
-                    switch (token.getId()) {
-                        case Constants.t_identificador:
-                            tokenClass.add("Identificador");
-                            break;
-                        case Constants.t_constante_inteira:
-                            tokenClass.add("Constante Inteira");
-                            break;   
-                        case Constants.t_constante_real:
-                            tokenClass.add("Constante Real");
-                            break;   
-                        case Constants.t_constante_string:
-                            tokenClass.add("Constante String");
-                            break;   
-                        case Constants.t_constante_caracter:
-                            tokenClass.add("Constante Caracter");
-                            break;
-                        default:
-                            //lexema não especificado
-                    }
-                }
+    public void setTokenClass(Token token, List<String> tokenClass) {
+        if (token.getId() >= 29 && token.getId() <= 48) {
+            //simbolo especial
+            tokenClass.add("Símbolo Especial");
+        } else if (token.getId() >= 7 && token.getId() <= 28) {
+            //palavra reservada
+            tokenClass.add("Palavra Reservada");
+        } else {
+            switch (token.getId()) {
+                case Constants.t_identificador:
+                    tokenClass.add("Identificador");
+                    break;
+                case Constants.t_constante_inteira:
+                    tokenClass.add("Constante Inteira");
+                    break;
+                case Constants.t_constante_real:
+                    tokenClass.add("Constante Real");
+                    break;
+                case Constants.t_constante_string:
+                    tokenClass.add("Constante String");
+                    break;
+                case Constants.t_constante_caracter:
+                    tokenClass.add("Constante Caracter");
+                    break;
+                default:
+                //lexema não especificado
+            }
+        }
     }
-    public Integer setTokenLine(Integer line, List<Integer> tokenLine, String[] textLine, Token token){
-         while(true){
-                    if(textLine[line].contains(token.getLexeme())){
-                        tokenLine.add(line);
-                        textLine[line] = textLine[line].replace(token.getLexeme(), "");
-                        break;
-                    }else{
-                        line++;
-                    }
-                }
-         return line;
+
+    public Integer setTokenLine(Integer line, List<Integer> tokenLine, String[] textLine, Token token) {
+        while (true) {
+            if (textLine[line].contains(token.getLexeme())) {
+                tokenLine.add(line);
+                textLine[line] = textLine[line].replace(token.getLexeme(), "");
+                break;
+            } else {
+                line++;
+            }
+        }
+        return line;
     }
     private void jButtonCompilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCompilarActionPerformed
         //Compilar
+        jTextAreaMessages.setText("");
         Lexico lexico = new Lexico();
+        Sintatico sintatico = new Sintatico();
+        Semantico semantico = new Semantico();
+
         lexico.setInput(jTextAreaTextEditor.getText());
-        String[] textLine = jTextAreaTextEditor.getText().split("\n");
         try {
-            Integer line = new Integer(0);
-            List<Token> tokenList = new LinkedList<>();
-            List<Integer> tokenLine = new LinkedList<>();
-            List<String> tokenClass = new LinkedList<>();
-            Token token = null;
-            boolean erro = false;
-            while ((token = lexico.nextToken()) != null) {
-                
-                    tokenList.add(token);
-                    setTokenClass(token, tokenClass);
-                    line  = setTokenLine(line, tokenLine, textLine, token);
-                
-            }
-            if(!erro){
-                for (int i = 0; i < tokenClass.size(); i++) {
-                    jTextAreaMessages.append((tokenLine.get(i)+1)+"\t"+tokenClass.get(i)+"\t"+tokenList.get(i).getLexeme()+"\n");
-                }
-                jTextAreaMessages.append("Programa Combilado com sucesso\n");
-            }
+            sintatico.parse(lexico, semantico);
+            jTextAreaMessages.setText("Programa compilado com sucesso.\n");
         } catch (LexicalError ex) {
-            ex.printStackTrace();
-            jTextAreaMessages.append("Falha ao compilar\n"+ex.getMessage()+":");
-            
-            
+            int linha = this.getLineByPosition(jTextAreaTextEditor.getText(), ex.getPosition());
+            jTextAreaMessages.setText("(\"Erro na linha " + ex.getMessage() + ":");
+        } catch (SyntaticError se) {
+            int linha = this.getLineByPosition(jTextAreaTextEditor.getText(), se.getToken().getPosition());
+            jTextAreaMessages.setText("Erro na linha " + linha + " - encontrado " + se.getToken().getLexeme() + " " + se.getMessage());
+        } catch (SemanticError ex) {
+
         }
+
     }//GEN-LAST:event_jButtonCompilarActionPerformed
+
+    private int getLineByPosition(String program, int position) {
+        System.out.println("position: " + position);
+        int index = program.length() == position ? position : position + 1;
+        String subprogram =  program.substring(0, index);
+        String[] programLines = subprogram.split("\n");
+        int lines = programLines.length;
+        return lines;
+    }
 
     private void jButtonEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEquipeActionPerformed
         // TODO add your handling code here:
