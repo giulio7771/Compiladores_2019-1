@@ -1749,10 +1749,10 @@ public interface ScannerConstants
 
     String[] SCANNER_ERROR =
     {
-        "Caractere n�o esperado",
+        "símbolo inválido",//"Caractere n�o esperado",
         "",
         "Erro identificando \"!=\"",
-        "Erro identificando constante_string",
+        "constante string inválida",//"Erro identificando constante_string",
         "Erro identificando <ignorar>",
         "",
         "",
@@ -1770,7 +1770,7 @@ public interface ScannerConstants
         "",
         "",
         "",
-        "Erro identificando constante_caracter",
+        "constante caracter inválida",//"Erro identificando constante_caracter",
         "",
         "",
         "",
@@ -1779,7 +1779,7 @@ public interface ScannerConstants
         "",
         "",
         "Erro identificando <ignorar>",
-        "Erro identificando constante_real",
+        "constante real inválida",//"Erro identificando constante_real",
         "",
         "",
         "",
