@@ -501,6 +501,7 @@ public class View extends javax.swing.JFrame {
         } catch (LexicalError ex) {
             int linha = this.getLineByPosition(jTextAreaTextEditor.getText(), ex.getPosition());
             jTextAreaMessages.setText("Erro na linha " + linha + " - " + ex.getLexeme() + " " + ex.getMessage());
+
         } catch (SyntaticError se) {
             int linha = this.getLineByPosition(jTextAreaTextEditor.getText(), se.getToken().getPosition());
             jTextAreaMessages.setText("Erro na linha " + linha + " - encontrado " + se.getToken().getLexeme() + " " + se.getMessage());
