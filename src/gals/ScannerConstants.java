@@ -1742,20 +1742,18 @@ public interface ScannerConstants
         { 0, 0, 0, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22 };
 
     String[] SPECIAL_CASES_KEYS =
-        {  "and", "begin", "bool", "char", "end", "false", "float", "forward", "ifFalseDo", "ifTrueDo", "int", "main", "module", "not", "or", "read", "string", "true", "voidentificador", "whileFalseDo", "whileTrueDo", "write" };
+        {  "and", "begin", "bool", "char", "end", "false", "float", "forward", "ifFalseDo", "ifTrueDo", "int", "main", "module", "not", "or", "read", "string", "true", "void", "whileFalseDo", "whileTrueDo", "write" };
 
     int[] SPECIAL_CASES_VALUES =
-        {  7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28 };
+        {  7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 28, 25, 26, 27 };
 
     String[] SCANNER_ERROR =
     {
-        "Caractere inválido",
+        "símbolo inválido",//"Caractere n�o esperado",
         "",
-        "Erro identificando \"!=\"",
-        "Erro identificando constante_string",
-        "Erro identificando <ignorar>",
-        "",
-        "",
+        "símbolo inválido",//"Erro identificando \"!=\"",
+        "constante string inválida",//"Erro identificando constante_string",
+        "comentário de bloco inválido ou não finalizado",//"Erro identificando <ignorar>",
         "",
         "",
         "",
@@ -1770,29 +1768,31 @@ public interface ScannerConstants
         "",
         "",
         "",
-        "Erro identificando constante_caracter",
+        "",
+        "",
+        "constante caracter inválida",//"Erro identificando constante_caracter",
         "",
         "",
         "",
         "",
-        "Erro identificando <ignorar>",
+        "comentário de bloco inválido ou não finalizado",//"Erro identificando <ignorar>",
         "",
         "",
-        "Erro identificando <ignorar>",
-        "Erro identificando constante_real",
-        "",
-        "",
-        "",
+        "comentário de bloco inválido ou não finalizado",//"Erro identificando <ignorar>",
+        "constante real inválida",//"Erro identificando constante_real",
         "",
         "",
         "",
-        "Erro identificando <ignorar>",
         "",
         "",
-        "Erro identificando <ignorar>",
-        "Erro identificando <ignorar>",
-        "Erro identificando constante_real",
-        "Erro identificando <ignorar>",
+        "",
+        "comentário de bloco inválido ou não finalizado",//"Erro identificando <ignorar>",
+        "",
+        "",
+        "comentário de bloco inválido ou não finalizado",//"Erro identificando <ignorar>",
+        "comentário de bloco inválido ou não finalizado",//"Erro identificando <ignorar>",
+        "constante real inválida",//"Erro identificando constante_real",
+        "comentário de bloco inválido ou não finalizado",//"Erro identificando <ignorar>",
         ""
     };
 

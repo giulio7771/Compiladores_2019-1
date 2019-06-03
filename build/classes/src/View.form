@@ -72,21 +72,21 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButtonAbrir" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButtonSalvar" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="jButtonSalvar" min="-2" pref="108" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButtonCopiar" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="jButtonCopiar" pref="120" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButtonColar" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButtonRecortar" min="-2" pref="100" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButtonCompilar" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="jButtonRecortar" min="-2" pref="119" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jButtonCompilar" min="-2" pref="108" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButtonEquipe" min="-2" pref="99" max="-2" attributes="0"/>
                       </Group>
                       <Component id="scroll" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
@@ -94,7 +94,7 @@
                       <Component id="jScrollPane1" pref="900" max="32767" attributes="0"/>
                       <Component id="jTextAreaMessages" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="13" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -139,6 +139,9 @@
             <Property name="autoscrolls" type="boolean" value="true"/>
             <Property name="focusCycleRoot" type="boolean" value="true"/>
             <Property name="hideActionText" type="boolean" value="true"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[2, 2, 2, 2]"/>
+            </Property>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[100, 70]"/>
             </Property>
@@ -157,6 +160,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="abrir [ctrl-o]"/>
             <Property name="autoscrolls" type="boolean" value="true"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[2, 2, 2, 2]"/>
+            </Property>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[111, 70]"/>
             </Property>
@@ -175,6 +181,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="salvar [ctrl-s]"/>
             <Property name="autoscrolls" type="boolean" value="true"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[2, 2, 2, 2]"/>
+            </Property>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[117, 70]"/>
             </Property>
@@ -193,6 +202,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="copiar [ctrl-c]"/>
             <Property name="autoscrolls" type="boolean" value="true"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[2, 2, 2, 2]"/>
+            </Property>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[117, 70]"/>
             </Property>
@@ -211,6 +223,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="colar [ctrl-v]"/>
             <Property name="autoscrolls" type="boolean" value="true"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[2, 2, 2, 2]"/>
+            </Property>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[111, 70]"/>
             </Property>
@@ -229,6 +244,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="recortar [ctrl-x]"/>
             <Property name="autoscrolls" type="boolean" value="true"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[2, 2, 2, 2]"/>
+            </Property>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[127, 70]"/>
             </Property>
@@ -247,6 +265,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="compilar [F9]"/>
             <Property name="autoscrolls" type="boolean" value="true"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[1, 1, 1, 1]"/>
+            </Property>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[115, 70]"/>
             </Property>
@@ -264,6 +285,9 @@
               <Image iconType="3" name="/src/8About.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="equipe [F1]"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[2, 2, 2, 2]"/>
+            </Property>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[107, 70]"/>
             </Property>
@@ -277,9 +301,7 @@
         </Component>
         <Component class="java.awt.TextArea" name="jTextAreaMessages">
           <Properties>
-            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[900, 100]"/>
-            </Property>
+            <Property name="editable" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
