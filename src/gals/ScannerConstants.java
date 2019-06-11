@@ -1,3 +1,4 @@
+package gals;
 public interface ScannerConstants
 {
     int[] SCANNER_TABLE_INDEXES = 
@@ -1747,13 +1748,11 @@ public interface ScannerConstants
 
     String[] SCANNER_ERROR =
     {
-        "Caractere n�o esperado",
+       "símbolo inválido",//"Caractere n�o esperado",
         "",
-        "Erro identificando \"!=\"",
-        "Erro identificando constante_string",
-        "Erro identificando <ignorar>",
-        "",
-        "",
+        "símbolo inválido",//"Erro identificando \"!=\"",
+        "constante string inválida",//"Erro identificando constante_string",
+        "comentário de bloco inválido ou não finalizado",//"Erro identificando <ignorar>",
         "",
         "",
         "",
@@ -1768,29 +1767,31 @@ public interface ScannerConstants
         "",
         "",
         "",
-        "Erro identificando constante_caracter",
+        "",
+        "",
+        "constante caracter inválida",//"Erro identificando constante_caracter",
         "",
         "",
         "",
         "",
-        "Erro identificando <ignorar>",
+        "comentário de bloco inválido ou não finalizado",//"Erro identificando <ignorar>",
         "",
         "",
-        "Erro identificando <ignorar>",
-        "Erro identificando constante_real",
-        "",
-        "",
-        "",
+        "comentário de bloco inválido ou não finalizado",//"Erro identificando <ignorar>",
+        "constante real inválida",//"Erro identificando constante_real",
         "",
         "",
         "",
-        "Erro identificando <ignorar>",
         "",
         "",
-        "Erro identificando <ignorar>",
-        "Erro identificando <ignorar>",
-        "Erro identificando constante_real",
-        "Erro identificando <ignorar>",
+        "",
+        "comentário de bloco inválido ou não finalizado",//"Erro identificando <ignorar>",
+        "",
+        "",
+        "comentário de bloco inválido ou não finalizado",//"Erro identificando <ignorar>",
+        "comentário de bloco inválido ou não finalizado",//"Erro identificando <ignorar>",
+        "constante real inválida",//"Erro identificando constante_real",
+        "comentário de bloco inválido ou não finalizado",//"Erro identificando <ignorar>",
         ""
     };
 

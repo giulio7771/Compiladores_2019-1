@@ -1,3 +1,4 @@
+package gals;
 import java.util.Stack;
 
 public class Sintatico implements Constants
@@ -56,7 +57,7 @@ public class Sintatico implements Constants
             }
             else
             {
-                throw new SyntaticError(PARSER_ERROR[x], currentToken.getPosition());
+                  throw new SyntaticError(PARSER_ERROR[x], currentToken);
             }
         }
         else if (isNonTerminal(x))
@@ -64,7 +65,7 @@ public class Sintatico implements Constants
             if (pushProduction(x, a))
                 return false;
             else
-                throw new SyntaticError(PARSER_ERROR[x], currentToken.getPosition());
+               throw new SyntaticError(PARSER_ERROR[x], currentToken);
         }
         else // isSemanticAction(x)
         {
@@ -79,7 +80,7 @@ public class Sintatico implements Constants
         if (p >= 0)
         {
             int[] production = PRODUCTIONS[p];
-            //empilha a produção em ordem reversa
+            //empilha a produï¿½ï¿½o em ordem reversa
             for (int i=production.length-1; i>=0; i--)
             {
                 stack.push(new Integer(production[i]));
