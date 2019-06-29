@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/josehenrique/Downloads/Compiladores/Compiladores_2019-1/src/gals/LexicalError.java</file>
-            <file>file:/C:/Users/josehenrique/Downloads/Compiladores/Compiladores_2019-1/src/gals/ScannerConstants.java</file>
-            <file>file:/C:/Users/josehenrique/Downloads/Compiladores/Compiladores_2019-1/src/gals/SyntaticError.java</file>
-            <file>file:/C:/Users/josehenrique/Downloads/Compiladores/Compiladores_2019-1/src/gals/Sintatico.java</file>
-            <file>file:/C:/Users/josehenrique/Downloads/Compiladores/Compiladores_2019-1/src/src/View.java</file>
-            <file>file:/C:/Users/josehenrique/Downloads/Compiladores/Compiladores_2019-1/src/gals/Lexico.java</file>
+            <file>file:/home/giulio/furb/compiladores/Compiladores_2019-1/src/gals/Semantico.java</file>
+            <file>file:/home/giulio/furb/compiladores/Compiladores_2019-1/src/gals/SemanticError.java</file>
+            <file>file:/home/giulio/furb/compiladores/Compiladores_2019-1/src/gals/DataType.java</file>
+            <file>file:/home/giulio/furb/compiladores/Compiladores_2019-1/src/src/View.java</file>
         </group>
     </open-files>
 </project-private>
