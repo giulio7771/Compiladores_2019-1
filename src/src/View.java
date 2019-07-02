@@ -54,6 +54,44 @@ public class View extends javax.swing.JFrame {
     private final Shortcut aPaste = new Shortcut("CTRLV");
     private final Shortcut aCompile = new Shortcut("F9");
 
+    private void gravarArquivo(List<String> codigo) {
+        System.out.println("gravarArquivo");
+        if (openedFile != null) {
+            try {
+                //salvar no arquivo aberto
+                FileWriter fr = new FileWriter(openedFile.getAbsolutePath());
+                PrintWriter pw = new PrintWriter(fr);
+                gravarArquivo(codigo, pw);
+                pw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            //salvar em um arquivo novo
+            JFileChooser jfc = new JFileChooser();
+            if (jfc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+                File file = jfc.getSelectedFile();
+                openedFile = file;
+                try {
+                    FileWriter fr = new FileWriter(file.getAbsolutePath());
+                    PrintWriter pw = new PrintWriter(fr);
+                    gravarArquivo(codigo, pw);
+                    pw.close();
+                    setStatus();
+                } catch (IOException ex) {
+                    Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        jTextAreaMessages.append("Arquivo salvo\n");
+    }
+
+    private void gravarArquivo(List<String> codigo, PrintWriter pw) {
+        for (String linha : codigo) {
+            pw.println(linha);
+        }
+    }
+
     public class Shortcut extends AbstractAction {
 
         private final String buttonPressed;
@@ -496,7 +534,10 @@ public class View extends javax.swing.JFrame {
 
         lexico.setInput(jTextAreaTextEditor.getText());
         try {
+            System.out.println("parse");
             sintatico.parse(lexico, semantico);
+            System.out.println("end sintatico parse");
+            gravarArquivo(semantico.getCodigo());
             jTextAreaMessages.setText("Programa compilado com sucesso.\n");
         } catch (LexicalError ex) {
             int linha = this.getLineByPosition(jTextAreaTextEditor.getText(), ex.getPosition());
@@ -506,7 +547,7 @@ public class View extends javax.swing.JFrame {
             int linha = this.getLineByPosition(jTextAreaTextEditor.getText(), se.getToken().getPosition());
             jTextAreaMessages.setText("Erro na linha " + linha + " - encontrado " + se.getToken().getLexeme() + " " + se.getMessage());
         } catch (SemanticError ex) {
-
+            ex.printStackTrace();
         }
 
     }//GEN-LAST:event_jButtonCompilarActionPerformed
