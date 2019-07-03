@@ -130,9 +130,13 @@ public class Semantico implements Constants {
         }
     }
 
-    public void action1() {//exceção pendente
+    public void action1() throws SemanticError {
         DataType tipo1 = pilha.pop();
         DataType tipo2 = pilha.pop();
+        if((tipo1 != DataType.int64 && tipo1 != DataType.float64) 
+                || (tipo2 != DataType.float64 && tipo2 != DataType.int64)){
+            throw new SemanticError("tipo(s) incompatível(is) em expressão aritmetica");
+        }
         if (tipo1.equals(DataType.float64) || tipo2.equals(DataType.float64)) {
             pilha.push(DataType.float64);
         } else {
@@ -141,9 +145,13 @@ public class Semantico implements Constants {
         codigo.add("add");
     }
 
-    private void action2() {//exceção pendente
+    private void action2() throws SemanticError {
         DataType tipo1 = pilha.pop();
         DataType tipo2 = pilha.pop();
+        if((tipo1 != DataType.int64 && tipo1 != DataType.float64) 
+                || (tipo2 != DataType.float64 && tipo2 != DataType.int64)){
+            throw new SemanticError("tipo(s) incompatível(is) em expressão aritmetica");
+        }
         if (tipo1 == DataType.float64 || tipo2 == DataType.int64) {
             pilha.push(DataType.float64);
         } else {
@@ -152,9 +160,13 @@ public class Semantico implements Constants {
         codigo.add("sub");
     }
 
-    private void action3() {//exceção pendente
+    private void action3() throws SemanticError {
         DataType tipo1 = pilha.pop();
         DataType tipo2 = pilha.pop();
+        if((tipo1 != DataType.int64 && tipo1 != DataType.float64) 
+                || (tipo2 != DataType.float64 && tipo2 != DataType.int64)){
+            throw new SemanticError("tipo(s) incompatível(is) em expressão aritmetica");
+        }
         if (tipo1 == DataType.float64 || tipo2 == DataType.int64) {
             pilha.push(DataType.float64);
         } else {
@@ -408,23 +420,23 @@ public class Semantico implements Constants {
         
     }
 
-    private void action38(Token token) {
+    private void action38(Token token) {//if
         
     }
 
-    private void action39(Token token) {
+    private void action39(Token token) {//if
     
     }
 
-    private void action40(Token token) {
+    private void action40(Token token) {//if
     
     }
 
-    private void action41(Token token) {
+    private void action41(Token token) {//while
     
     }
 
-    private void action42(Token token) {
+    private void action42(Token token) {//while
     
     }
 }
