@@ -106,6 +106,24 @@ public class Semantico implements Constants {
             case 36:
                 action36(token);
                 break;
+            case 37:
+                action37(token);
+                break;
+            case 38:
+                action38(token);
+                break;
+            case 39:
+                action39(token);
+                break;
+            case 40:
+                action40(token);
+                break;
+            case 41:
+                action41(token);
+                break;
+            case 42:
+                action42(token);
+                break;
             default:
                 break;
 
@@ -372,13 +390,41 @@ public class Semantico implements Constants {
     }
 
     private void action36(Token token) throws SemanticError { //TODO
-        switch (token.getLexeme()) {
-            case "+=":
-                break;
-            case "-=":
-                break;
-            case "=":
-                break;
+        /*String idCase36 = listaid.get(0);
+
+        if (!ts.containsKey(idCase36)) {
+            throw new SemanticError(idCase36 + " não declarado.", StringManipulationUtil.getRowError(token.getPosition(), input));
         }
+
+        setOperadorRelacional(token.getLexeme());
+
+        if (operadorRelacional.equalsIgnoreCase("+=") || operadorRelacional.equalsIgnoreCase("-=")) {
+            codigo.add("ldloc " + idCase36);
+            codigo.add("conv.r8");
+        }*/
+    }
+
+    private void action37(Token token) {
+        
+    }
+
+    private void action38(Token token) {
+        
+    }
+
+    private void action39(Token token) {
+    
+    }
+
+    private void action40(Token token) {
+    
+    }
+
+    private void action41(Token token) {
+    
+    }
+
+    private void action42(Token token) {
+    
     }
 }
