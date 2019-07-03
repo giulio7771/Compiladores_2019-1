@@ -10,5 +10,5 @@ package gals;
  * @author giulio
  */
 public enum DataType {
-    float64, int64, bool
+    float64, int64, bool, string
 }
